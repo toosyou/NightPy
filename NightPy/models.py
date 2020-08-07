@@ -6,13 +6,7 @@ class Channel:
         self.id = unique_id
         self.display_name = display_name
 
-        if type(joined) is bool:
-            self.joined = joined
-        else:
-            if joined.lower() == 'true':
-                self.joined = True
-            else:
-                self.joined = False
+        self.joined = joined
         self.name = name
         self.plan = plan
 
@@ -33,10 +27,7 @@ class DefaultCommand:
     def __init__(self, unique_name, cool_down, enabled, command_name, user_level):
         self.name = unique_name
         self.cool_down = cool_down
-        if enabled.lower() == 'true':
-            self.enabled = True
-        else:
-            self.enabled = False
+        self.enabled = enabled
         self.command_name = command_name
         self.user_level = user_level
 
@@ -74,35 +65,19 @@ class Regular:
 class Limits:
     def __init__(self, user, playlist_only, exempt_user_level):
         self.user = user
-
-        if playlist_only.lower() == 'true':
-            self.playlist_only = True
-        else:
-            self.playlist_only = False
-        if exempt_user_level.lower() == 'true':
-            self.exempt_user_level = True
-        else:
-            self.exempt_user_level = False
+        self.playlist_only = playlist_only
+        self.exempt_user_level = exempt_user_level
 
 
 class Youtube:
     def __init__(self, limit_to_music, limit_to_liked_videos):
-        if limit_to_music.lower() == 'true':
-            self.limit_to_music = True
-        else:
-            self.limit_to_music = False
-        if limit_to_liked_videos.lower() == 'true':
-            self.limit_to_liked_videos = True
-        else:
-            self.limit_to_liked_videos = False
+        self.limit_to_music = limit_to_music
+        self.limit_to_liked_videos = limit_to_liked_videos
 
 
 class SongRequest:
     def __init__(self, enabled, limits,  playlist, providers, search_provider, user_level, volume, youtube):
-        if enabled.lower() == 'true':
-            self.enabled = True
-        else:
-            self.enabled = False
+        self.enabled = enabled
         self.limits = limits
         self.playlist = playlist
         self.providers = providers
@@ -144,17 +119,11 @@ class Filter:
                  limit=None, limit_min=None, limit_max=None, blacklist=None, whitelist=None):
         self.name = name
         self.type = filter_type
-        if enabled.lower() == 'true':
-            self.enabled = True
-        else:
-            self.enabled = False
+        self.enabled = enabled
         self.exempt_user_level = exempt_user_level
         self.length = length
         self.message = message
-        if silent.lower() == 'true':
-            self.silent = True
-        else:
-            self.silent = False
+        self.silent = silent
         # Optional
         self.limit = limit
         self.limit_min = limit_min
@@ -178,10 +147,7 @@ class Timers:
     def __init__(self, timer_id, created_at, enabled, interval, lines, message, name, next_run_at, updated_at):
         self.id = timer_id
         self.created_at = created_at
-        if enabled.lower() == 'true':
-            self.enabled = True
-        else:
-            self.enabled = False
+        self.enabled = enabled
         self.interval = interval
         self.lines = lines
         self.message = message

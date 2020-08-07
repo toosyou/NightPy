@@ -37,7 +37,7 @@ class NightPy:
             elif method == 'post':
                 response = requests.post('{0}{1}'.format(self.api_uri, endpoint), headers=header, data=payload)
             elif method == 'put':
-                response = requests.put('{0}{1}'.format(self.api_uri, endpoint), headers=header, data=payload)
+                response = requests.put('{0}{1}'.format(self.api_uri, endpoint), headers=header, json=payload)
             else:
                 response = None
             if response.status_code == 200:
@@ -360,11 +360,11 @@ class NightPy:
             search_provider = ''
 
         payload = {
-            'enabled': str(enabled).lower(),
+            'enabled': enabled,
             'limits': {
                 'queue': queue_limit,
                 'user': user_limits,
-                'playlistOnly': str(playlist_only).lower(),
+                'playlistOnly': playlist_only,
                 'exemptUserLevel': exempt_user_level.lower(),
             },
             'playlist': playlist,
@@ -373,8 +373,8 @@ class NightPy:
             'userLevel': request_user_level,
             'volume': volume,
             'youtube': {
-                'limitToMusic': str(youtube_limit_to_music).lower(),
-                'limitToLikedVideos': str(youtube_limit_to_liked).lower()
+                'limitToMusic': youtube_limit_to_music,
+                'limitToLikedVideos': youtube_limit_to_liked
             }
 
         }
