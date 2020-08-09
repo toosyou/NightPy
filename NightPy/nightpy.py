@@ -126,7 +126,7 @@ class NightPy:
     """
     def send_channel_message(self, message):
         payload = {'message': '{0}'.format(message)}
-        self.api_request('channel/send', method='post', payload=payload)
+        return self.api_request('channel/send', method='post', payload=payload)
 
     # -------------------------------------------------------------------------
     # SCOPE: COMMANDS
